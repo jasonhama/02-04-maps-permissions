@@ -1,5 +1,6 @@
 package edu.uw.mapdemo;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -9,10 +10,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    static final LatLng SEATTLE = new LatLng(47.6147628, -122.4759898);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +45,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(47.6550, -122.3080);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in UW"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions()
+                .position(SEATTLE)
+                .title("HELLO SEATTLE"));
+
+        PolylineOptions rectOptions = new PolylineOptions()
+                .add(new LatLng(47, -125),
+                (new LatLng(47, -127)),
+                (new LatLng(49, -127)),
+                (new LatLng(49, -125)),
+                (new LatLng(47, -125)))
+                .width(5)
+                .color(Color.RED);
     }
+
+
+
+
+
 }
